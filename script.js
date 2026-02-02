@@ -34,21 +34,20 @@ document.addEventListener("mousemove", (e) => {
 
 // YES button click
 yesButton.addEventListener("click", () => {
+  // Get South African time
+  const now = new Date();
+  const sastTime = now.toLocaleString("en-ZA", {
+    timeZone: "Africa/Johannesburg",
+    dateStyle: "full",
+    timeStyle: "medium"
+  });
 
-  // ✅ Send email via EmailJS
-const now = new Date();
-const sastTime = now.toLocaleString("en-ZA", {
-  timeZone: "Africa/Johannesburg",
-  dateStyle: "full",
-  timeStyle: "medium"
-});
-
-emailjs.send(
-  "service_r9rb4tl",
-  "template_d7gy4rc",
-  { time: sastTime } // ✅ send the time variable
-)              // Must pass an object even if empty
-    
+  // Send email via EmailJS with the time variable
+  emailjs.send(
+    "service_r9rb4tl",   // Your Service ID
+    "template_d7gy4rc",  // Your Template ID
+    { time: sastTime },   // Must match {{time}} in your template
+    "RhXbtQWtt0wuoDRoT"  // Your public key
   ).then(
     () => {
       // Show celebration screen
