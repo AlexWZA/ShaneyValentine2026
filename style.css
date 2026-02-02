@@ -57,6 +57,6 @@ button {
 #no {
   background-color: #555;
   color: white;
-  /* 🚫 DO NOT make it absolute here */
+  /* DO NOT make it absolute here */
   /* it will only become absolute when JS moves it */
 }
