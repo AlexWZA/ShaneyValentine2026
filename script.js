@@ -1,26 +1,25 @@
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
-const container = document.querySelector(".container");
 
-// Function to move NO button without going off-screen
+// Function to move NO button anywhere on screen without going off-screen
 function moveNoButton() {
   const btnWidth = noButton.offsetWidth;
   const btnHeight = noButton.offsetHeight;
 
-  // Full window width and height minus button size
+  // Calculate random position inside viewport
   const x = Math.random() * (window.innerWidth - btnWidth);
   const y = Math.random() * (window.innerHeight - btnHeight);
 
-  noButton.style.position = "absolute";
+  noButton.style.position = "absolute"; // only now make it absolute
   noButton.style.left = `${x}px`;
   noButton.style.top = `${y}px`;
 }
 
-// Move NO button immediately on hover or touch
+// Make NO move immediately on hover or touch
 noButton.addEventListener("mouseenter", moveNoButton);
 noButton.addEventListener("touchstart", moveNoButton);
 
-// Extra: move NO if mouse gets close (makes it almost impossible to click)
+// Extra: move NO if cursor gets close (makes it hard to click)
 document.addEventListener("mousemove", (e) => {
   const rect = noButton.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
@@ -28,26 +27,29 @@ document.addEventListener("mousemove", (e) => {
 
   const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY);
 
-  if (distance < 100) { // if cursor is within 100px
+  if (distance < 100) {
     moveNoButton();
   }
 });
 
 // YES button click
 yesButton.addEventListener("click", () => {
-  const now = new Date();
 
-  // South African time (optional)
-  const sastTime = now.toLocaleString("en-ZA", {
-    timeZone: "Africa/Johannesburg",
-    dateStyle: "full",
-    timeStyle: "medium"
-  });
+  // ✅ Send email via EmailJS
+const now = new Date();
+const sastTime = now.toLocaleString("en-ZA", {
+  timeZone: "Africa/Johannesburg",
+  dateStyle: "full",
+  timeStyle: "medium"
+});
 
-  // Send email via EmailJS
-  emailjs.send("service_r9rb4tl", "template_d7gy4rc", {
-    // time: sastTime  <-- optional, remove if template doesn't use it
-  }).then(
+emailjs.send(
+  "service_r9rb4tl",
+  "template_d7gy4rc",
+  { time: sastTime } // ✅ send the time variable
+)              // Must pass an object even if empty
+    
+  ).then(
     () => {
       // Show celebration screen
       document.body.innerHTML = `
