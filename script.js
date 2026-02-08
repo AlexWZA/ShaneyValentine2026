@@ -1,12 +1,11 @@
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
 
-// Function to move NO button anywhere on screen without going off-screen
+// Move NO button randomly without going off screen
 function moveNoButton() {
   const btnWidth = noButton.offsetWidth;
   const btnHeight = noButton.offsetHeight;
 
-  // Calculate random position inside viewport
   const x = Math.random() * (window.innerWidth - btnWidth);
   const y = Math.random() * (window.innerHeight - btnHeight);
 
@@ -15,7 +14,7 @@ function moveNoButton() {
   noButton.style.top = `${y}px`;
 }
 
-// Move NO immediately on hover or touch
+// Move NO on hover or touch
 noButton.addEventListener("mouseenter", moveNoButton);
 noButton.addEventListener("touchstart", moveNoButton);
 
@@ -32,7 +31,7 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
-// YES button click
+// YES button logic
 yesButton.addEventListener("click", () => {
   // Get South African time
   const now = new Date();
@@ -42,36 +41,22 @@ yesButton.addEventListener("click", () => {
     timeStyle: "medium"
   });
 
-  // ✅ Send email via EmailJS with the time variable
+  // Send email
   emailjs.send(
-    "service_r9rb4tl",   // Service ID
-    "template_d7gy4rc",  // Template ID
-    { time: sastTime },   // MUST match {{time}} in your template
-    "RhXbtQWtt0wuoDRoT"  // Public key
-  ).then(
-    () => {
-      // Celebration screen
-      document.body.innerHTML = `
-        <div style="
-          height:100vh;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          font-family:Arial, sans-serif;
-          background:linear-gradient(135deg,#ff4d6d,#ffb3c6);
-          color:white;
-          text-align:center;
-        ">
-          <h1>
-            YAY!!! 💖🥰<br>
-            You just made me the happiest person alive 💕
-          </h1>
-        </div>
-      `;
-    },
-    (error) => {
-      alert("Email failed, but she still said YES! 💖");
-      console.error(error);
-    }
-  );
+    "service_r9rb4tl",
+    "template_d7gy4rc",
+    { time: sastTime },
+    "RhXbtQWtt0wuoDRoT"
+  ).then(() => {
+    // Hide question
+    document.querySelector(".container").style.display = "none";
+
+    // Show and play video
+    const video = document.getElementById("valentineVideo");
+    video.style.display = "block";
+    video.play();
+  }).catch((error) => {
+    alert("Email failed, but she still said YES! 💖");
+    console.error(error);
+  });
 });
