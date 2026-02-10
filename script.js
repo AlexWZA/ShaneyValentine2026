@@ -40,6 +40,10 @@ yesButton.addEventListener("click", () => {
     dateStyle: "full",
     timeStyle: "medium"
   });
+  
+  setTimeout(() => {
+  document.getElementById("overlayText").style.opacity = "1";
+}, 10000);
 
   // Send email
   emailjs.send(
@@ -56,7 +60,7 @@ yesButton.addEventListener("click", () => {
     video.style.display = "block";
     video.play();
   }).catch((error) => {
-    alert("Email failed, but she still said YES! 💖");
+    alert("💖");
     console.error(error);
   });
 });

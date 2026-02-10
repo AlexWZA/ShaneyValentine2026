@@ -60,3 +60,14 @@ button {
   /* DO NOT make it absolute here */
   /* it will only become absolute when JS moves it */
 }
+
+#overlayText {
+  position: fixed;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
