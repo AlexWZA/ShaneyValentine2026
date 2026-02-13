@@ -1,7 +1,11 @@
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
+const container = document.querySelector(".container");
+const video = document.getElementById("valentineVideo");
 
-// Move NO button randomly without going off screen
+/* ------------------ NO BUTTON LOGIC ------------------ */
+
+// Move NO button randomly within screen bounds
 function moveNoButton() {
   const btnWidth = noButton.offsetWidth;
   const btnHeight = noButton.offsetHeight;
@@ -14,11 +18,13 @@ function moveNoButton() {
   noButton.style.top = `${y}px`;
 }
 
-// Move NO on hover or touch
+// Move on hover (desktop)
 noButton.addEventListener("mouseenter", moveNoButton);
+
+// Move on touch (mobile)
 noButton.addEventListener("touchstart", moveNoButton);
 
-// Extra: move NO if cursor gets close
+// Move if cursor gets close
 document.addEventListener("mousemove", (e) => {
   const rect = noButton.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
@@ -31,12 +37,23 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
-document.addEventListener("contextmenu", (e) => {
+
+/* ------------------ VIDEO PROTECTION ------------------ */
+
+// Disable right-click specifically on video
+video.addEventListener("contextmenu", (e) => {
   e.preventDefault();
 });
 
-// YES button logic
+// Disable download & PiP (modern browsers)
+video.controlsList = "nodownload noremoteplayback";
+video.disablePictureInPicture = true;
+
+
+/* ------------------ YES BUTTON LOGIC ------------------ */
+
 yesButton.addEventListener("click", () => {
+
   // Get South African time
   const now = new Date();
   const sastTime = now.toLocaleString("en-ZA", {
@@ -44,7 +61,6 @@ yesButton.addEventListener("click", () => {
     dateStyle: "full",
     timeStyle: "medium"
   });
-  
 
   // Send email
   emailjs.send(
@@ -53,16 +69,15 @@ yesButton.addEventListener("click", () => {
     { time: sastTime },
     "RhXbtQWtt0wuoDRoT"
   ).then(() => {
+
     // Hide question
-    document.querySelector(".container").style.display = "none";
+    container.style.display = "none";
 
     // Show and play video
-    const video = document.getElementById("valentineVideo");
     video.style.display = "block";
     video.play();
+
   }).catch((error) => {
-    alert("💖");
     console.error(error);
   });
 });
-
