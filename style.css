@@ -1,63 +1,26 @@
-/* Full-screen layout */
-body {
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center; /* center container horizontally */
-  align-items: center;     /* center container vertically */
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  overflow: hidden;
-}
-
-/* Main container with heading and buttons */
-.container {
-  text-align: center;
-}
-
-/* Heading style */
-h1 {
-  font-size: 2.5rem;
-  color: white;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Buttons wrapper */
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  margin-top: 20px;
-  /* remove position: relative */
-}
-
-/* General button style */
-button {
-  font-size: 1.2rem;
-  padding: 14px 34px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.2s; /* smooth hover scaling */
-}
-
-/* YES button style */
-#yes {
-  background-color: #ff4d6d;
-  color: white;
-}
-
-#yes:hover {
-  transform: scale(1.1);
-}
-
-/* NO button style */
-#no {
-  background-color: #555;
-  color: white;
-  /* DO NOT make it absolute here */
-  /* it will only become absolute when JS moves it */
-}
-
+  body {
+    font-family: Arial, sans-serif;
+    background: #fce4ec;
+    text-align: center;
+    padding-top: 80px;
+    color: #333;
+  }
+  h1 { margin-bottom: 50px; }
+  .option {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border-radius: 20px;
+    background: #ff4081;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 200px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  }

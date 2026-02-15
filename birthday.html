@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+<link rel="stylesheet" href="birthdaystyle.css">
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+    emailjs.init("RhXbtQWtt0wuoDRoT");
+</script>
+
+</head>
+
+<body id="body">
+
+<h1 class="title">🎉 Happy 37th Birthday To Shaney My Love 🎉</h1>
+
+<div class="cake" id="cake">
+    <div class="plate"></div>
+
+    <!-- 3 slices example -->
+    <div class="slice slice1">
+        <div class="layer layer-bottom"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+    </div>
+
+    <div class="slice slice2">
+        <div class="layer layer-bottom"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+    </div>
+
+    <div class="slice slice3">
+        <div class="layer layer-bottom"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+    </div>
+
+    <!-- Candles dynamically created by JS -->
+    <div id="candles-container"></div>
+</div>
+
+<!-- Video container OUTSIDE the cake -->
+<div id="video-container" style="display:none; text-align:center;">
+  <video 
+    id="birthdayVideo"
+    playsinline
+    controls
+    controlsList="nodownload noremoteplayback"
+    disablePictureInPicture
+    style="width:100%; max-width:600px; margin:40px auto; display:block;"
+  >
+    <source src="Birthdayvideo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+</div>
+
+<p id="instruction">💨 Blow out the candles!!! 💨</p>
+
+<script src="birthdayscript.js"></script>
+</body>
+</html>
