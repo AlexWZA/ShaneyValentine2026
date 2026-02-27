@@ -1,12 +1,12 @@
 /* ------------------------- BODY ------------------------- */
 body {
   margin: 0;
-  overflow: hidden;
+ 
   font-family: Arial, sans-serif;
   background-color: #ffc0cb; /* soft pink */
   text-align: center;
   color: #333;
-  height: 100vh; /* full viewport height */
+ 
   display: flex;
   justify-content: center;
   align-items: center;
