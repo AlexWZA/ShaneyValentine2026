@@ -5,27 +5,45 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffc0cb; /* soft pink */
   text-align: center;
-  color: #333; /* dark text for contrast */
+  color: #333;
+  height: 100vh; /* full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ------------------------- STEP 1 ------------------------- */
 #step1 {
-  position: absolute;
-  width: 100%;
-  top: 40%;
+  display: flex;
+  flex-direction: column; /* stack image, question, buttons */
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* spacing between elements */
+  max-width: 90%;
+  margin: 0 auto;
 }
 
+/* Image above question */
+#annivImage {
+  max-width: 350px;
+  width: 50%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Question */
 #step1 h2 {
   font-size: 28px;
+  margin: 0;
 }
 
 /* Buttons */
 button {
-  padding: 12px 25px;
-  margin: 10px;
+  padding: 15px 30px;
   font-size: 18px;
-  border: none;
   border-radius: 25px;
+  border: none;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -36,8 +54,7 @@ button:hover {
 
 /* Message under buttons */
 #message {
-  font-size: 26px;
-  margin-top: 20px;
+  font-size: 24px;
 }
 
 /* ------------------------- GAME ------------------------- */
@@ -68,12 +85,8 @@ button:hover {
 }
 
 @keyframes fall {
-  from {
-    transform: translateY(-10vh);
-  }
-  to {
-    transform: translateY(110vh);
-  }
+  from { transform: translateY(-10vh); }
+  to { transform: translateY(110vh); }
 }
 
 /* Particle Effect */
@@ -85,38 +98,50 @@ button:hover {
 }
 
 @keyframes burst {
-  to {
-    transform: translate(var(--x), var(--y));
-    opacity: 0;
-  }
+  to { transform: translate(var(--x), var(--y)); opacity: 0; }
 }
 
 /* ------------------------- VIDEO ------------------------- */
 #videoContainer {
-  display: none;               /* hidden initially */
-  position: fixed;             /* overlay everything */
+  display: none;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: pink;      /* pink background */
-  justify-content: center;     /* horizontal center */
-  align-items: center;         /* vertical center */
-  z-index: 999;                /* above all content */
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
   padding: 40px 0;
 }
 
 #videoContainer video {
   max-width: 80%;
   height: auto;
-  display: block;              /* obey flex centering */
-  border-radius: 15px;         /* optional styling */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* optional styling */
+  display: block;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-#annivImage {
-  max-width: 200px;      /* or whatever size fits your layout */
-  height: auto;
-  margin-bottom: 20px;   /* spacing between image and question */
-  border-radius: 15px;   /* optional, rounded corners */
+/* ------------------------- RESPONSIVE ------------------------- */
+@media (max-width: 768px) {
+  #annivImage {
+    max-width: 250px;
+    width: 70%;
+  }
+
+  #step1 h2 {
+    font-size: 22px;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  #message {
+    font-size: 20px;
+  }
 }
