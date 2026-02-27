@@ -1,0 +1,122 @@
+/* ------------------------- BODY ------------------------- */
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-color: #ffc0cb; /* soft pink */
+  text-align: center;
+  color: #333; /* dark text for contrast */
+}
+
+/* ------------------------- STEP 1 ------------------------- */
+#step1 {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+#step1 h2 {
+  font-size: 28px;
+}
+
+/* Buttons */
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Message under buttons */
+#message {
+  font-size: 26px;
+  margin-top: 20px;
+}
+
+/* ------------------------- GAME ------------------------- */
+#game {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* Transition Text */
+#transitionText {
+  position: absolute;
+  width: 100%;
+  top: 15%;
+  font-size: 32px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* Falling Hearts */
+.heart {
+  position: absolute;
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-10vh);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+/* Particle Effect */
+.particle {
+  position: absolute;
+  font-size: 14px;
+  pointer-events: none;
+  animation: burst 0.6s forwards;
+}
+
+@keyframes burst {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+/* ------------------------- VIDEO ------------------------- */
+#videoContainer {
+  display: none;               /* hidden initially */
+  position: fixed;             /* overlay everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: pink;      /* pink background */
+  justify-content: center;     /* horizontal center */
+  align-items: center;         /* vertical center */
+  z-index: 999;                /* above all content */
+  padding: 40px 0;
+}
+
+#videoContainer video {
+  max-width: 80%;
+  height: auto;
+  display: block;              /* obey flex centering */
+  border-radius: 15px;         /* optional styling */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* optional styling */
+}
+
+#annivImage {
+  max-width: 200px;      /* or whatever size fits your layout */
+  height: auto;
+  margin-bottom: 20px;   /* spacing between image and question */
+  border-radius: 15px;   /* optional, rounded corners */
+}
