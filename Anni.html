@@ -17,21 +17,28 @@
 </head>
 <body>
 
-  <!-- Step 1: Buttons -->
-<div id="step1">
-  <!-- Add your image here -->
-  <img id="annivImage" src="Moaner_Shaney.png" alt="Anniversary Image">
-  
-  <h2>Do you love me as much as I love you?</h2>
-  <button id="yesBtn">Yes!</button>
-  <button id="absBtn">Absolutely ❤️</button>
-  <div id="message"></div>
-</div>
+  <!-- Step 1: Image + Question + Buttons -->
+  <div id="step1">
+    <img id="annivImage" src="Moaner_Shaney.png" alt="Anniversary Image">
+    
+    <h2>Do you love me as much as I love you?</h2>
+    
+    <!-- Buttons container -->
+    <div id="buttonContainer">
+      <button id="yesBtn">Yes!</button>
+      <button id="absBtn">Absolutely ❤️</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
 
   <!-- Step 3: Heart Catch Game + Transition Text -->
   <div id="game">
     <div id="transitionText">Now catch my love and DO NOT MISS 💌</div>
   </div>
+
+  <!-- Game background music (hidden initially) -->
+  <audio id="gameMusic" src="hearts.mp3" loop></audio>
 
   <!-- Video Reveal -->
   <div id="videoContainer">

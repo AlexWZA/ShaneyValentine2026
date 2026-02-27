@@ -6,6 +6,7 @@ const game = document.getElementById("game");
 const transitionText = document.getElementById("transitionText");
 const videoContainer = document.getElementById("videoContainer");
 const video = document.getElementById("video");
+const gameMusic = document.getElementById("gameMusic"); // 🎵 music element
 
 let heartsPopped = 0;
 const targetHearts = 10;
@@ -26,6 +27,10 @@ absBtn.addEventListener("click", () => {
 function startGame() {
   step1.style.display = "none";
   game.style.display = "block";
+
+  // Play background music
+  gameMusic.currentTime = 0;
+  gameMusic.play().catch(() => {}); // silently ignore autoplay issues
 
   // Show transition text
   transitionText.style.opacity = "1";
@@ -49,10 +54,9 @@ function spawnHearts() {
     heart.classList.add("heart");
     heart.innerText = "❤️";
 
-    heart.style.left = Math.random() * 90 + "vw"; // keep inside screen
+    heart.style.left = Math.random() * 90 + "vw";
     heart.style.animationDuration = (3 + Math.random() * 2) + "s";
 
-    // Prevent double-counting clicks
     let clicked = false;
     heart.addEventListener("click", (e) => {
       if (clicked) return;
@@ -64,7 +68,6 @@ function spawnHearts() {
 
     game.appendChild(heart);
 
-    // Remove heart if not clicked after 5s
     setTimeout(() => heart.remove(), 5000);
 
   }, 600);
@@ -91,6 +94,10 @@ function popEffect(x, y) {
 
 /* ----------------- END GAME → SHOW VIDEO ----------------- */
 function endGame() {
+  // Stop game music
+  gameMusic.pause();
+  gameMusic.currentTime = 0;
+
   game.style.display = "none";
   videoContainer.style.display = "flex";
   videoContainer.style.justifyContent = "center";
@@ -99,7 +106,7 @@ function endGame() {
 
   video.style.display = "block";
   document.body.style.background = "pink";
-  video.play().catch(() => {}); // silently ignore autoplay errors
+  video.play().catch(() => {}); 
 
   // Video protection
   video.addEventListener("contextmenu", e => e.preventDefault());
@@ -121,5 +128,5 @@ function endGame() {
       { time: sastTime },
       "RhXbtQWtt0wuoDRoT"
     );
-  }, 100); // short delay to ensure UI is ready
+  }, 100);
 }
