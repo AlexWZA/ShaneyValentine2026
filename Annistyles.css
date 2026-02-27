@@ -1,32 +1,29 @@
 /* ------------------------- BODY ------------------------- */
 body {
   margin: 0;
- 
   font-family: Arial, sans-serif;
-  background-color: #ffc0cb; /* soft pink */
+  background-color: #ffc0cb;
   text-align: center;
   color: #333;
- 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ------------------------- STEP 1 ------------------------- */
 #step1 {
   display: flex;
-  flex-direction: column; /* stack image, question, buttons */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px; /* spacing between elements */
-  max-width: 90%;
-  margin: 0 auto;
+  gap: 20px;
+
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 20px;
 }
 
 /* Image above question */
 #annivImage {
-  max-width: 350px;
-  width: 50%;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
@@ -59,7 +56,9 @@ button:hover {
 
 /* ------------------------- GAME ------------------------- */
 #game {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: none;
@@ -98,7 +97,10 @@ button:hover {
 }
 
 @keyframes burst {
-  to { transform: translate(var(--x), var(--y)); opacity: 0; }
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
 }
 
 /* ------------------------- VIDEO ------------------------- */
@@ -110,26 +112,31 @@ button:hover {
   width: 100%;
   height: 100%;
   background-color: pink;
-  display: flex;
+
   justify-content: center;
   align-items: center;
+
   z-index: 999;
-  padding: 40px 0;
+  padding: 20px;
 }
 
 #videoContainer video {
-  max-width: 80%;
+  width: 100%;
+  max-width: 800px;
   height: auto;
-  display: block;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 /* ------------------------- RESPONSIVE ------------------------- */
 @media (max-width: 768px) {
+  #step1 {
+    margin: 40px auto;
+    padding: 15px;
+  }
+
   #annivImage {
-    max-width: 250px;
-    width: 70%;
+    max-width: 300px;
   }
 
   #step1 h2 {
@@ -143,5 +150,9 @@ button:hover {
 
   #message {
     font-size: 20px;
+  }
+
+  #transitionText {
+    font-size: 22px;
   }
 }
